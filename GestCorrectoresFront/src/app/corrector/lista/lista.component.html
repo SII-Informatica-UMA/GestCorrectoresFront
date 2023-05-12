@@ -1,0 +1,21 @@
+<table>
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Correo electrónico</th>
+    <th>Especialidad</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let corrector of listaCorrectores">
+    <td>{{ corrector.nombre }}</td>
+    <td>{{ corrector.email }}</td>
+    <td>{{ corrector.examenes }}</td>
+    <td>
+      <button (click)="editarCorrector(corrector.id)">Editar</button>
+      <button (click)="eliminarCorrector(corrector.id)">Eliminar</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
