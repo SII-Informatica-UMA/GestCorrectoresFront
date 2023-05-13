@@ -21,11 +21,7 @@ export class ListaComponent implements OnInit {
     this.correctorService.getAllCorrectors().subscribe(
       correctores => {
       this.listaCorrectores = correctores;
-    },
-    err => {
-      console.log(err);
-    }
-    );
+    });
   }
 
   editarCorrector(id: number): void {
