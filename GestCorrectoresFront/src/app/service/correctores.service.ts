@@ -12,12 +12,8 @@ export class CorrectorService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCorrectors(idConvocatoria?: number): Observable<Corrector[]> {
-    if (idConvocatoria) {
-      return this.http.get<Corrector[]>(`${this.apiUrl}/correctores/${idConvocatoria}`);
-    } else {
-      return this.http.get<Corrector[]>(`${this.apiUrl}/correctores`);
-    }
+  getAllCorrectors(): Observable<[]> {
+    return this.http.get<[]>(`${this.apiUrl}/correctores`);
   }
 
   getCorrectorById(id: number): Observable<Corrector> {

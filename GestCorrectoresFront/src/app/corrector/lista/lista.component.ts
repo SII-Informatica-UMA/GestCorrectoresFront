@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Directive, OnInit} from '@angular/core';
 import { Corrector } from '../../models/correctores';
 import { CorrectorService } from '../../service/correctores.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.css']
 })
+
+
 export class ListaComponent implements OnInit {
 
   listaCorrectores: Corrector[] = [];
+  correctorSeleccionado?: Corrector;
 
-  constructor(private correctorService: CorrectorService) {}
+  constructor(private correctorService: CorrectorService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.obtenerCorrectores();
@@ -24,12 +29,18 @@ export class ListaComponent implements OnInit {
     });
   }
 
-  editarCorrector(id: number): void {
-    // Lógica para editar un corrector
+  editarCorrector(): void {
+    this.router.navigate(['/editar-corrector']);
   }
 
-  eliminarCorrector(id: number): void {
-    // Lógica para eliminar un corrector
+  eliminarCorrector(id: any): void {
+    this.correctorService.deleteCorrector(id).subscribe(() => {
+      this.obtenerCorrectores();
+    });
   }
 
+
+  addCorrector() {
+    this.router.navigate(['/add-corrector']);
+  }
 }
