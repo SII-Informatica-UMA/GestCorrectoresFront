@@ -36,6 +36,6 @@ export class ListaComponent implements OnInit {
 
 
   addCorrector() {
-    this.router.navigate(['/add-corrector']);
+    this.router.navigate(['add-corrector']);
   }
 }

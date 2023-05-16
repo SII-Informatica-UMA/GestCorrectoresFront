@@ -3,7 +3,6 @@ import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CorrectorService} from "../../service/correctores.service";
 import {Corrector} from "../../models/correctores";
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editar-corrector',
@@ -12,27 +11,40 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditarCorrectorComponent implements OnInit {
 
-  @Input() correctorSeleccionado!: Corrector;
+  // Inside your component class
+  corrector: any = {
+    nombre: '',
+    apellido1: '',
+    apellido2: '',
+    email: '',
+    telefono: '',
+    examenes: ''
+  };
+
 
   constructor(
     private location: Location,
     private activatedRoute: ActivatedRoute,
-    private toastr: ToastrService,
     private router: Router,
     private correctorService: CorrectorService
   ) {
   }
 
-  ngOnInit(): void {
-    console.log(this.correctorSeleccionado);
-    const nombreInput = document.getElementById("nombre") as HTMLInputElement;
-    const apellido1Input = document.getElementById("apellido1") as HTMLInputElement;
-    const apellido2Input = document.getElementById("apellido2") as HTMLInputElement;
-    const telefonoInput = document.getElementById("telefono") as HTMLInputElement;
-    const emailInput = document.getElementById("email") as HTMLInputElement;
+  ngOnInit() {
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.correctorService.getCorrectorById(id).subscribe(
+      data => {
+        this.corrector = data;
+      },
+      err => {
+        alert('Error al acceder al corrector ' + err.error);
+        console.error('Error al acceder al corrector', err);
+        this.router.navigate(['/correctores']);
+      }
+    );
   }
 
-  async send() {
+  async onUpdate() {
 
     const nombreInput = document.getElementById("nombre") as HTMLInputElement;
     const apellido1Input = document.getElementById("apellido1") as HTMLInputElement;
@@ -40,13 +52,8 @@ export class EditarCorrectorComponent implements OnInit {
     const telefonoInput = document.getElementById("telefono") as HTMLInputElement;
     const emailInput = document.getElementById("email") as HTMLInputElement;
 
-    if (!nombreInput.value || !apellido1Input.value || !apellido2Input.value || !telefonoInput.value || !emailInput.value) {
-      alert("Campos incompletos.");
-      return;
-    }
-
     const newCorrector: Corrector = {
-      id: this.correctorSeleccionado?.id,
+      id: this.corrector.id,
       nombre: nombreInput.value,
       apellido1: apellido1Input.value,
       apellido2: apellido2Input.value,
@@ -55,7 +62,7 @@ export class EditarCorrectorComponent implements OnInit {
       telefono: telefonoInput.value,
     };
 
-    console.log(this.correctorSeleccionado);
+    console.log(newCorrector);
     this.correctorService.updateCorrector(newCorrector).subscribe(
       (corrector) => {
         this.router.navigate(['/correctores']);

@@ -1,20 +1,20 @@
-<form>
+<form (ngSubmit)="send()" novalidate #f="ngForm">
   <label>Nombre:</label>
-  <input id="nombre" type="text" formControlName="nombre">
+  <input id="nombre" name="nombre" type="text" >
 
   <label>Apellido 1:</label>
-  <input id="apellido1" type="text" formControlName="apellido1">
+  <input id="apellido1" name="apellido1" type="text" >
 
   <label>Apellido 2:</label>
-  <input id="apellido2" formControlName="apellido2">
+  <input id="apellido2" name="apellido2" >
 
   <label>Email:</label>
-  <input id="email" type="text" formControlName="email">
+  <input id="email" name="email" type="text" >
 
   <label>Telefono:</label>
-  <input id="telefono" type="text" formControlName="telefono">
+  <input id="telefono" name="telefono" type="text" >
 
-  <button type="submit" (click)="send()">Agregar Corrector</button>
+  <button [disabled]="!f.valid">Agregar</button>
   <button type="button" (click)="back()">Volver</button>
 </form>
 
