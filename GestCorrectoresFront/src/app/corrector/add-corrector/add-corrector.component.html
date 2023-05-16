@@ -1,0 +1,20 @@
+<form>
+  <label>Nombre:</label>
+  <input id="nombre" type="text" formControlName="nombre">
+
+  <label>Apellido 1:</label>
+  <input id="apellido1" type="text" formControlName="apellido1">
+
+  <label>Apellido 2:</label>
+  <input id="apellido2" formControlName="apellido2">
+
+  <label>Email:</label>
+  <input id="email" type="text" formControlName="email">
+
+  <label>Telefono:</label>
+  <input id="telefono" type="text" formControlName="telefono">
+
+  <button type="submit" (click)="send()">Agregar Corrector</button>
+  <button type="button" (click)="back()">Volver</button>
+</form>
+
