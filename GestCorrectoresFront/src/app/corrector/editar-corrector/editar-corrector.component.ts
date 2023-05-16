@@ -3,7 +3,7 @@ import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CorrectorService} from "../../service/correctores.service";
 import {Corrector} from "../../models/correctores";
-import {error} from "@angular/compiler-cli/src/transformers/util";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editar-corrector',
@@ -16,8 +16,9 @@ export class EditarCorrectorComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private router: Router,
     private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService,
+    private router: Router,
     private correctorService: CorrectorService
   ) {
   }

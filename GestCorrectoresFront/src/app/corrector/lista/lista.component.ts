@@ -13,7 +13,6 @@ import {Router} from "@angular/router";
 export class ListaComponent implements OnInit {
 
   listaCorrectores: Corrector[] = [];
-  correctorSeleccionado?: Corrector;
 
   constructor(private correctorService: CorrectorService,
               private router: Router) {}
@@ -27,10 +26,6 @@ export class ListaComponent implements OnInit {
       correctores => {
       this.listaCorrectores = correctores;
     });
-  }
-
-  editarCorrector(): void {
-    this.router.navigate(['/editar-corrector']);
   }
 
   eliminarCorrector(id: any): void {

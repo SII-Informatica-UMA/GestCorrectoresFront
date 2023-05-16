@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/correctores', pathMatch: 'full' },
   { path: 'correctores', component: ListaComponent },
   { path: 'add-corrector', component: AddCorrectorComponent },
-  { path: 'editar-corrector', component: EditarCorrectorComponent }
+  {path: 'editar/:id', component: EditarCorrectorComponent},
 ];
 
 @NgModule({

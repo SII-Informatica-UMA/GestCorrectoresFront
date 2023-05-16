@@ -15,7 +15,7 @@
     <td>{{ corrector.email }}</td>
     <td>{{ corrector.examenes }}</td>
     <td>
-      <button (click)="editarCorrector()">Editar</button>
+    <td><button routerLink="/editar/{{corrector.id}}"> Editar</button>
       <button (click)="eliminarCorrector(corrector.id)">Eliminar</button>
     </td>
   </tr>
