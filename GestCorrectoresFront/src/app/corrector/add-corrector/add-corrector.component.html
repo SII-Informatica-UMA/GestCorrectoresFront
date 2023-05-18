@@ -14,6 +14,6 @@
   <label>Telefono:</label>
   <input id="telefono" name="telefono" type="text" >
 
-  <button type="submit" (click)="send()" [disabled]="!f.valid">Agregar</button>
+  <button [disabled]="!f.valid">Agregar</button>
   <button type="button" (click)="back()">Volver</button>
 </form>
