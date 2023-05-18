@@ -13,9 +13,9 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 export class AddCorrectorComponent implements OnInit {
 
   constructor(
-    private location: Location,
-    private router: Router,
-    private correctorService: CorrectorService
+    public location: Location,
+    public router: Router,
+    public correctorService: CorrectorService
   ) {
   }
 

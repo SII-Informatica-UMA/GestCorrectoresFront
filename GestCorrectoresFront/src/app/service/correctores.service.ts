@@ -12,8 +12,8 @@ export class CorrectorService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCorrectors(): Observable<[]> {
-    return this.http.get<[]>(`${this.apiUrl}/correctores`);
+  getAllCorrectors(): Observable<Corrector[]> {
+    return this.http.get<[Corrector]>(`${this.apiUrl}/correctores`);
   }
 
   getCorrectorById(id: number): Observable<Corrector> {

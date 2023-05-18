@@ -3,8 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/GestCorrectoresFront/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/GestCorrectoresFront/tmp" />
+      <sourceFolder url="file://$MODULE_DIR$/GestCorrectoresFront" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
